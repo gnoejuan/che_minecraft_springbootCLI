@@ -14,9 +14,7 @@ RUN mkdir /home/user/tomcat8 /home/user/apache-maven-$MAVEN_VERSION && \
     echo "export MAVEN_OPTS=\$JAVA_OPTS" >> /home/user/.bashrc && \
     sudo chgrp -R 0 ~/tomcat8 && \
     sudo chmod -R g+rwX ~/tomcat8
-RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends supervisor zip && \
-    rm -Rf /etc/supervisor && \
-    mv /etc/supervisor2 /etc/supervisor && \
+RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends zip && \
     curl -s "https://get.sdkman.io" | bash && \ 
     /bin/bash -i -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install springboot && spring --version"
 RUN sudo mkdir /minecraft
