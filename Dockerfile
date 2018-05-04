@@ -7,6 +7,7 @@ ENV MAVEN_VERSION=3.5.3 \
     TERM=xterm
 ENV M2_HOME=/home/user/apache-maven-$MAVEN_VERSION
 ENV PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
+ENV JAVA_OPTIONS=-Xmx300m
 RUN mkdir /home/user/tomcat8 /home/user/apache-maven-$MAVEN_VERSION && \
     wget -qO- "http://apache.ip-connect.vn.ua/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C /home/user/apache-maven-$MAVEN_VERSION/ && \
     wget -qO- "http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.24/bin/apache-tomcat-8.0.24.tar.gz" | tar -zx --strip-components=1 -C /home/user/tomcat8 && \
@@ -16,9 +17,9 @@ RUN mkdir /home/user/tomcat8 /home/user/apache-maven-$MAVEN_VERSION && \
     sudo chmod -R g+rwX ~/tomcat8
 RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends zip && \
     curl -s "https://get.sdkman.io" | bash && \ 
-    /bin/bash -i -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install springboot && spring --version"
-RUN sudo mkdir /minecraft
-RUN sudo chown -R user: /minecraft
-RUN cd /minecraft
+    /bin/bash -i -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install springboot"
+RUN cd /projects && \
+    mkdir minecraft && \
+    cd minecraft
 RUN curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
 RUN /bin/bash -i -c "java -jar BuildTools.jar"
