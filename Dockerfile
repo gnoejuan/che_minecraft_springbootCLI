@@ -19,7 +19,8 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends zip &
     curl -s "https://get.sdkman.io" | bash && \ 
     /bin/bash -i -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install springboot"
 RUN cd /projects && \
-    mkdir minecraft && \
+    sudo mkdir minecraft && \
+    sudo chown -R user: minecraft && \
     cd minecraft
 RUN curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
 RUN /bin/bash -i -c "java -jar BuildTools.jar"
