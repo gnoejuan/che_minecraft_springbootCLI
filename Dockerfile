@@ -18,9 +18,8 @@ RUN mkdir /home/user/tomcat8 /home/user/apache-maven-$MAVEN_VERSION && \
 RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends zip && \
     curl -s "https://get.sdkman.io" | bash && \ 
     /bin/bash -i -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install springboot"
-RUN cd /projects && \
-    sudo mkdir minecraft && \
-    sudo chown -R user: minecraft && \
-    cd minecraft && pwd
-RUN pwd && curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
-RUN /bin/bash -i -c "java -jar BuildTools.jar"
+RUN sudo mkdir minecraft && \
+    sudo chown -R user: minecraft
+RUN cd minecraft && \
+    curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar &&\
+    /bin/bash -i -c "java -jar BuildTools.jar"
