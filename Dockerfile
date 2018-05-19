@@ -22,5 +22,5 @@ RUN cd /projects && \
     sudo mkdir minecraft && \
     sudo chown -R user: minecraft && \
     cd minecraft && pwd
-RUN curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+RUN pwd && curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
 RUN /bin/bash -i -c "java -jar BuildTools.jar"
