@@ -18,6 +18,7 @@ RUN mkdir /home/user/tomcat8 /home/user/apache-maven-$MAVEN_VERSION && \
 RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends zip && \
     curl -s "https://get.sdkman.io" | bash && \ 
     /bin/bash -i -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install springboot"
+RUN sudo apt-get install screen -y
 RUN sudo mkdir /minecraft && \
     sudo chown -R user: /minecraft
 RUN cd /minecraft && \
