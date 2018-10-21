@@ -22,6 +22,6 @@ RUN sudo apt-get install screen -y
 RUN sudo mkdir /minecraft && \
     sudo chown -R user: /minecraft
 RUN cd /minecraft && \
-    curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar &&\
+    curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
 #    /bin/bash -i -c "java -jar BuildTools.jar"
 # After researching Minecraft in general, I've discovered hosting a build of the spigot jar **might** be in violation of the EULA
