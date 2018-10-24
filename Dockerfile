@@ -1,7 +1,7 @@
 FROM eclipse/stack-base:ubuntu
 EXPOSE 4403 8000 8080 9876 22
 LABEL che:server:8080:ref=tomcat8 che:server:8080:protocol=http che:server:8000:ref=tomcat8-debug che:server:8000:protocol=http che:server:9876:ref=codeserver che:server:9876:protocol=http
-ENV MAVEN_VERSION=3.5.3 \
+ENV MAVEN_VERSION=3.5.4 \
     JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 \
     TOMCAT_HOME=/home/user/tomcat8 \
     TERM=xterm
